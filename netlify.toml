@@ -3,9 +3,6 @@ from = "/*"
 to = "/index.html"
 status = 200        
 
-[functions]
-  directory = "Luxcraft/netlify/functions"
-
 [context.production.environment]
   REACT_APP_API_KEY="password=passapi"
   REACT_APP_API_URL="https://luxurialoom.onrender.com"
