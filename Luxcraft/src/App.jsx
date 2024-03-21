@@ -4,25 +4,42 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import OurWork from './pages/OurWork';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import SingleWork from './pages/SingleWork';
+import ServerAdmin from './pages/ServerAdmin';
+import LayComponents from './components/Layout/layoutComponents';
 
 function App() {
   return (
     <>
       <Router>
-        <Navbar />
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/services' element={<Services />} />
-          <Route path='/ourwork' element={<OurWork />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/singlework' element={<SingleWork />} />
+          <Route path='/' element={
+            <LayComponents>
+              <Home />
+            </LayComponents>
+          } />
+          <Route path='/services' element={
+            <LayComponents>
+              <Services />
+            </LayComponents>
+          } />
+          <Route path='/ourwork' element={
+            <LayComponents>
+              <OurWork />
+            </LayComponents>
+          } />
+          <Route path='/contact' element={
+            <LayComponents>
+              <Contact />
+            </LayComponents>
+          } />
+          <Route path='/singlework' element={
+            <LayComponents>
+              <SingleWork />
+            </LayComponents>
+          } />
+          <Route path='/admin/server' element={<ServerAdmin />}/>
         </Routes>
-        <div className='container mx-auto'>
-          <Footer />
-        </div>
       </Router>
     </>
   );
