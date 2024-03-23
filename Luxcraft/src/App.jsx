@@ -11,7 +11,31 @@ import LayComponents from './components/Layout/layoutComponents';
 import { jwtDecode } from "jwt-decode";
 import { AppContext } from './context/AppContext';
 function App() {
+  
   const { setLogin } = useContext(AppContext);
+  const isTokenExpired = (expirationTimestamp) => {
+    const currentTimestamp = Math.floor(Date.now() / 1000);
+    return currentTimestamp >= expirationTimestamp;
+  };
+  
+  // Function to handle token expiration
+  const handleTokenExpiration = () => {
+    const tokenExpiration = localStorage.getItem('expired');
+
+    if (tokenExpiration) {
+      const expirationTimestamp = parseInt(tokenExpiration, 10);
+      if (isTokenExpired(expirationTimestamp)) {
+        // Clear token and logout user
+        localStorage.removeItem('token');
+        localStorage.removeItem('expired');
+        // Redirect to login page
+        window.location.href = '/login'; // or use router navigation if using a router
+        // Optionally notify the user
+        alert('Your session has expired. Please log in again.');
+      }
+    }
+  };
+  handleTokenExpiration();
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {

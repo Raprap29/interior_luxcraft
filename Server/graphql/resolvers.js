@@ -65,7 +65,7 @@ const resolvers = {
       loginUser: async (_, { input }) => {
         try {
             const existUser = await userModel.findOne({ username: input.username });
-    
+            
             if (!existUser) {
                 throw new Error("User not found");
             }
