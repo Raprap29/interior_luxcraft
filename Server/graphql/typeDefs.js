@@ -16,6 +16,19 @@ const typeDefs = `
     img: String!
   }
 
+  type Login {
+    username: String!
+    email: String!
+    password: String!
+    token: String  # Make token nullable
+  }
+
+  type Register {
+    username: String!
+    email: String!
+    password: String!
+  }
+
   input ImageWorkInput {
     img: String!
   }
@@ -32,6 +45,12 @@ const typeDefs = `
     dateWork: String
   }
 
+  input LoginInput {
+    username: String!
+    email: String!
+    password: String!
+  }
+
   input UpdateWorkInput {
     imageWorks: [ImageWorkInput!]
     nameWork: String
@@ -44,6 +63,12 @@ const typeDefs = `
     dateWork: String
   }
 
+  input RegisterInput {
+    username: String!
+    email: String!
+    password: String!
+  }
+
   type Query {
     getWork(id: ID!): Work
     getAllWorks: [Work!]!
@@ -53,6 +78,8 @@ const typeDefs = `
     createWork(input: CreateWorkInput!): Work!
     updateWork(id: ID!, input: UpdateWorkInput!): Work!
     deleteWork(id: ID!): Work!
+    loginUser(input: LoginInput!): Login!
+    registerUser(input: RegisterInput!): Register!  
   }
 `;
 

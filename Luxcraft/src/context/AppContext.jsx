@@ -9,8 +9,10 @@ const AppProvider = ({ children }) => {
     password: ""
   });
 
+  const [login, setLogin] = useState(false);
+
   return (
-    <AppContext.Provider value={{ form, setForm }}>
+    <AppContext.Provider value={{ form, setForm, login, setLogin }}>
       {children}
     </AppContext.Provider>
   );
