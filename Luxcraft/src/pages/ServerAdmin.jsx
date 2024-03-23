@@ -6,11 +6,11 @@ import { AppContext } from "../context/AppContext";
 import { LOGIN_USER } from "../graphql/mutation";
 import { useMutation } from '@apollo/client';
 
-
 const ServerAdmin = () => {
 
     const { form, setForm, login, setFormError, formError, Loading, setLoading } = useContext(AppContext);
     const [loginUser] = useMutation(LOGIN_USER);
+
     const useLoginFormChange = (e) => {
         try {
             setForm({...form, [e.target.name]: e.target.value});
@@ -22,6 +22,7 @@ const ServerAdmin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         LoginActionSubmit(form, setForm, loginUser, setFormError, setLoading);
+        // window.location.href = '/admin/maintenance';
     };
 
     return(

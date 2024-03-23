@@ -64,10 +64,10 @@ const resolvers = {
       // Handling Login User
       loginUser: async (_, { input }) => {
         try {
-            const existUser = await userModel.findOne({ username: input.username });
+            const existUser = await userModel.findOne({ username: input.username, email: input.email });
             
             if (!existUser) {
-                throw new Error("User not found");
+                throw new Error("Incorrect email and password");
             }
     
             if (verifyLogin(input.password, existUser.salt, existUser.password)) {
