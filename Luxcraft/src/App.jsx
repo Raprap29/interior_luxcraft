@@ -10,6 +10,7 @@ import ServerAdmin from './pages/ServerAdmin';
 import LayComponents from './components/Layout/layoutComponents';
 import { jwtDecode } from "jwt-decode";
 import { AppContext } from './context/AppContext';
+import Maintenance from './pages/Maintenance';
 function App() {
   
   const { setLogin } = useContext(AppContext);
@@ -49,6 +50,7 @@ function App() {
             console.error('Error decoding token:', error);
             // Optionally, clear the invalid token from local storage
             localStorage.removeItem('token');
+            localStorage.removeItem('expired');
             setLogin(false);
         }
     }
@@ -83,6 +85,7 @@ function App() {
             </LayComponents>
           } />
           <Route path='/admin/server' element={<ServerAdmin />}/>
+          <Route path='/maintenance' element={<Maintenance />} />
         </Routes>
       </Router>
     </>

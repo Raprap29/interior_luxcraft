@@ -22,7 +22,6 @@ const ServerAdmin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         LoginActionSubmit(form, setForm, loginUser, setFormError, setLoading);
-        // window.location.href = '/admin/maintenance';
     };
 
     return(

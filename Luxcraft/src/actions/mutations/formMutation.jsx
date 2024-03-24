@@ -30,6 +30,10 @@ export const LoginActionSubmit = async (formData, setForm, loginUser, setFormErr
                 username: "",
                 password: "",
             });
+            window.location.href = '/maintenance';
         }
+
+
+
    }
 };
